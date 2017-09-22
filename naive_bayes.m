@@ -15,12 +15,12 @@ function [] = naive_bayes( data, test, type, number )
     data_split_by_class = cell(size(classes));
     
     for i = 1:size(classes,1)   
-        data_split_by_class{i} = training_data(training_data(:,width) == classes(i), 1:width-1)
+        data_split_by_class{i} = training_data(training_data(:,width) == classes(i), 1:width-1);
     end
     
 %     data_split_by_class
 %     gaussians( data_split_by_class, height, width);
-%    histograms( data_split_by_class, height, width, 5 );
+   histograms( data_split_by_class, height, width, 5 );
     
 %     if nargin == 3 && type == 'gaussians'
 %         gaussians( sorted_data, height, width);
@@ -85,12 +85,13 @@ function [] = histograms( training_data, height, width, number )
             prob_bin_given_class(i, j, 1) = 0;
             prob_bin_given_class (i, j, end) = 0;
             
-            size(training_data{i}(training_data{i}(j,:) < bins(i,j,(2))),2)
-            training_data{i}(training_data{i}(j,:) < bins(i,j,(2)))
+            size(training_data{i}(:,training_data{i}(:,j) < bins(i,j,(2))),2)
+            training_data{i}(training_data{i}(j,:) < bins(i,j,(2)),:)
             (size(training_data{i}(:,j),1))
-            for k = 1:(number-2)
-                prob_bin_given_class(i, j, k+1) = size(training_data{i}(training_data{i}(:,j) < bins(i,j,(k+1))),2) / (size(training_data{i}(:,j),2) * G);
-            end
+            
+%             for k = 1:(number-2)
+%                 prob_bin_given_class(i, j, k+1) = size(training_data{i}(:,training_data{i}(:,j) < bins(i,j,(k+1))),2) / (size(training_data{i}(:,j),2) * G);
+%             end
             
             %b = bin_data(end,j);
             
