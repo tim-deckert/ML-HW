@@ -64,13 +64,11 @@ function [] = logistic_regression( training_file, degree, test_file )
         weights = newWeights;
     end
     
-    newWeights
-    
-    for i = 0:(size(weights, 1)-1)
-        fprintf('w%d=%.4f\n', i, weights(i+1));
+    for i = 0:(size(newWeights, 1)-1)
+        fprintf('w%d=%.4f\n', i, newWeights(i+1));
     end
      
-    finalY = sigmf(weights.' * testPhi.', [1 0]).';
+    finalY = sigmf(newWeights.' * testPhi.', [1 0]).';
     
     testT = testing_data(:, width);
     testT = testT == 1;
